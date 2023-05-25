@@ -1,2 +1,3 @@
 FROM tomcat:8.5.89
-COPY /*.war webapps/app.war
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+COPY /*.war /usr/local/tomcat/webapps/app.war
