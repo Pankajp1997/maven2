@@ -1,2 +1,2 @@
 FROM tomcat:8.5.89
-COPY target/*.war webapps/app.war
+COPY /var/lib/jenkins/workspace/Project-1/webapp/target/*.war webapps/app.war
