@@ -1,0 +1,29 @@
+---  # A programme to write a playbook for the deploying of container on server thru Jenkins pipeline.
+- hosts: all
+  become: true 
+  tasks:
+    - name: Installing the pip 
+      apt:
+        name: python-pip
+        state: present 
+    - name: Installing the docker 
+      apt:
+        name: docker 
+        state: present
+    - name: start the docker 
+      service: 
+        name: docker
+        state: started
+        enabled: yes
+    - name: Install docker-py pyhton 
+      pip: 
+        name: docker-py
+        state: present
+    - name: creating the container from docker image 
+      docker_container: 
+        name: webapp container
+        image: "kubepankaj/webapp-project1:v1.0"
+        state: started
+        published_ports: 
+          - "0.0.0.0:8090:8080"
+...
